@@ -124,7 +124,7 @@
         app:layout_constraintBottom_toBottomOf="@id/texture_view_container" />
 
     <!-- Video Frame -->
-    <FrameLayout
+    <!-- <FrameLayout
         android:id="@+id/texture_view_container"
         android:layout_width="400dp"
         android:layout_height="250dp"
@@ -141,6 +141,32 @@
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+    </FrameLayout> -->
+
+
+    <FrameLayout
+        android:id="@+id/texture_view_container"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="120dp"
+        android:clipToOutline="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Outer FrameLayout that acts as border -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10px"
+            android:background="@drawable/border_background">
+
+            <!-- Actual video view -->
+            <TextureView
+                android:id="@+id/bannerTextureView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
     </FrameLayout>
 
     <!-- Right-side icons -->
