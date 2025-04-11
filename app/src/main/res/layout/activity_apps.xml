@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/launcher_background" />
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="280dp"
+        android:layout_height="130dp"
+        android:focusable="false"
+        android:src="@drawable/tfiber_png"
+        app:layout_constraintBottom_toTopOf="@id/texture_view_container"
+        app:layout_constraintEnd_toEndOf="@id/texture_view_container"
+        app:layout_constraintStart_toStartOf="@id/texture_view_container"
+        android:translationY="5dp"/> <!-- Move image up -->
+
+
+    <LinearLayout
+        android:id="@+id/clockContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="50dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextClock
+            android:id="@+id/timeClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="hh:mm:ss a"
+            android:format24Hour="HH:mm:ss"
+            android:textColor="@color/my_clock_color"
+            android:textSize="20sp" />
+
+        <TextClock
+            android:id="@+id/dateClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:format12Hour="EEEE, MMM dd"
+            android:format24Hour="EEEE, MMM dd"
+            android:textColor="@color/my_clock_color"
+            android:textSize="12sp" />
+    </LinearLayout>
+    
+    <!-- URL Display -->
+    <TextView
+        android:id="@+id/urlTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_centerInParent="true"
+        android:padding="16dp"/>
+
+    <!-- WebView -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+
+    <ImageView
+        android:id="@+id/telanganaImage"
+        android:layout_width="900dp"  
+        android:layout_height="130dp"
+        android:src="@drawable/gamestelangana"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:translationY="-10dp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/iconRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topBanner"
+        app:layout_constraintStart_toStartOf="@id/topBanner"
+        app:layout_constraintEnd_toEndOf="@id/topBanner"
+        android:translationX="40dp"
+        android:translationY="110dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

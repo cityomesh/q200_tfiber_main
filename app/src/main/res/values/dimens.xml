@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recycler_view_spacing">-28dp</dimen>
+        <dimen name="icon_spacing">4dp</dimen> <!-- you can reduce to 4dp or 2dp -->
+</resources>
