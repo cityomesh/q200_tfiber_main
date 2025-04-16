@@ -184,52 +184,6 @@
         app:layout_constraintTop_toTopOf="@id/texture_view_container"
         app:layout_constraintBottom_toBottomOf="@id/texture_view_container"/>  <!-- Reduce vertical gap -->
 
-    <!-- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_margin="10dp">
-
-        <ViewFlipper
-            android:id="@+id/imageFlipper"
-            android:layout_width="880dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="380dp"
-            android:autoStart="true"
-            android:flipInterval="3000"
-            android:inAnimation="@android:anim/fade_in"
-            android:outAnimation="@android:anim/fade_out">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bottom_banner"
-                android:scaleType="fitXY" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/endrammahouse"
-                android:scaleType="fitXY" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/endrammahouse2"
-                android:scaleType="fitXY" />
-        </ViewFlipper>
-
-        <ImageView
-            android:id="@+id/customercare"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/customer_care"
-            android:scaleType="fitXY"
-            android:layout_marginTop="-2dp"/>
-    </LinearLayout> -->
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

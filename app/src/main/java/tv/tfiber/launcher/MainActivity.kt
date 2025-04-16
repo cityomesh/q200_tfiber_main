@@ -139,6 +139,13 @@ class MainActivity : AppCompatActivity() {
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse2.png"
         )
 
+
+//        val imageUrls = listOf(
+//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide1.png",
+//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide2.png",
+//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide3.png"
+//        )
+
         for (url in imageUrls) {
             val imageView = ImageView(this)
             imageView.layoutParams = ViewGroup.LayoutParams(
