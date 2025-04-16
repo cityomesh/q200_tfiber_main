@@ -1,6 +1,7 @@
 package tv.tfiber.launcher
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -22,19 +23,23 @@ import android.view.MotionEvent
 import android.view.Surface
 import android.view.TextureView
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import android.widget.ViewFlipper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import tv.tfiber.launcher.updates.UpdateChecker
 import tv.tfiber.launcher.updates.UpdateInfo
 import java.io.File
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var updateDialog: AlertDialog
     private lateinit var progressDialog: AlertDialog
     private lateinit var progressBar: ProgressBar
+    private lateinit var viewFlipper: ViewFlipper
     private val audioFocusChangeListener = AudioManager.OnAudioFocusChangeListener { focusChange ->
         when (focusChange) {
             AudioManager.AUDIOFOCUS_GAIN -> {
@@ -91,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         textureView = findViewById(R.id.bannerTextureView)
         val settingsIcon = findViewById<ImageView>(R.id.settingsIcon)
         val updateIcon: ImageView = findViewById(R.id.updateIcon)
+        viewFlipper = findViewById(R.id.imageFlipper)
 
         updateChecker = UpdateChecker(this)
 
@@ -126,9 +133,35 @@ class MainActivity : AppCompatActivity() {
             false
         }
 
+        val imageUrls = listOf(
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/bottom_banner.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse2.png"
+        )
+
+        for (url in imageUrls) {
+            val imageView = ImageView(this)
+            imageView.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            imageView.scaleType = ImageView.ScaleType.FIT_XY
+
+            Glide.with(this)
+                .load(url)
+//                .placeholder(R.drawable.placeholder)
+//                .error(R.drawable.fallback_image)
+                .into(imageView)
+
+            viewFlipper.addView(imageView)
+        }
+
+        viewFlipper.flipInterval = 3000
+        viewFlipper.startFlipping()
+
         setupRecyclerView()
         setupTextureView()
-        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         audioFocusRequest = createAudioFocusRequest()
         requestAudioFocus()
         checkForUpdates()
@@ -566,7 +599,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             try {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-            } catch (e: android.content.ActivityNotFoundException) {
+            } catch (e: ActivityNotFoundException) {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
             }
         }

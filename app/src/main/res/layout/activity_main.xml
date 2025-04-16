@@ -184,14 +184,13 @@
         app:layout_constraintTop_toTopOf="@id/texture_view_container"
         app:layout_constraintBottom_toBottomOf="@id/texture_view_container"/>  <!-- Reduce vertical gap -->
 
-    <LinearLayout
+    <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_margin="10dp">
 
-        <!-- ViewFlipper for auto-scrolling banner images -->
         <ViewFlipper
             android:id="@+id/imageFlipper"
             android:layout_width="880dp"
@@ -221,7 +220,6 @@
                 android:scaleType="fitXY" />
         </ViewFlipper>
 
-        <!-- Customer Care Image -->
         <ImageView
             android:id="@+id/customercare"
             android:layout_width="500dp"
@@ -229,8 +227,40 @@
             android:src="@drawable/customer_care"
             android:scaleType="fitXY"
             android:layout_marginTop="-2dp"/>
-    </LinearLayout>
+    </LinearLayout> -->
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/bottomSection"
+            android:layout_width="880dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"> 
+
+            <ViewFlipper
+                android:id="@+id/imageFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:autoStart="true"
+                android:flipInterval="3000"
+                android:inAnimation="@android:anim/fade_in"
+                android:outAnimation="@android:anim/fade_out"/>
+
+            <ImageView
+                android:id="@+id/customercare"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/customer_care"
+                android:scaleType="fitXY"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
