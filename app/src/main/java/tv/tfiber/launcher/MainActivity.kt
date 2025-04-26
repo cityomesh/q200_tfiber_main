@@ -1,6 +1,7 @@
 package tv.tfiber.launcher
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -51,6 +52,7 @@ import android.content.*
 import kotlinx.coroutines.delay
 
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var textureView: TextureView
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressDialog: AlertDialog
     private lateinit var progressBar: ProgressBar
     private lateinit var viewFlipper: ViewFlipper
+<<<<<<< HEAD
     private var uninstallCallback: (() -> Unit)? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -75,6 +78,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+=======
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
     private val audioFocusChangeListener = AudioManager.OnAudioFocusChangeListener { focusChange ->
         when (focusChange) {
             AudioManager.AUDIOFOCUS_GAIN -> {
@@ -178,6 +183,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val imageUrls = listOf(
+<<<<<<< HEAD
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/omesh.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/Hyderabad-Logo.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/ehelthimge.png",
@@ -187,6 +193,20 @@ class MainActivity : AppCompatActivity() {
         )
 
 
+=======
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/bottom_banner.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse2.png"
+        )
+
+
+//        val imageUrls = listOf(
+//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide1.png",
+//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide2.png",
+//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide3.png"
+//        )
+
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
         for (url in imageUrls) {
             val imageView = ImageView(this)
             imageView.layoutParams = ViewGroup.LayoutParams(
@@ -195,12 +215,19 @@ class MainActivity : AppCompatActivity() {
             )
             imageView.scaleType = ImageView.ScaleType.FIT_XY
 
+<<<<<<< HEAD
             val updatedUrl = "$url?timestamp=${System.currentTimeMillis()}"
 
             Glide.with(this)
                 .load(updatedUrl)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
+=======
+            Glide.with(this)
+                .load(url)
+//                .placeholder(R.drawable.placeholder)
+//                .error(R.drawable.fallback_image)
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
                 .into(imageView)
 
             viewFlipper.addView(imageView)
@@ -211,7 +238,7 @@ class MainActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupTextureView()
-        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         audioFocusRequest = createAudioFocusRequest()
         requestAudioFocus()
         checkForUpdates()
@@ -953,6 +980,7 @@ class MainActivity : AppCompatActivity() {
                 component = ComponentName(packageName, resolveInfo.activityInfo.name)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
+<<<<<<< HEAD
             startActivity(leanbackIntent)
             return
         }
@@ -968,6 +996,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
         } catch (e: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+=======
+            startActivity(launchIntent)
+        } else {
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+            } catch (e: ActivityNotFoundException) {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            }
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
         }
     }
 

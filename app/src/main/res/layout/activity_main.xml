@@ -171,23 +171,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+<<<<<<< HEAD
         <!-- Bottom Section fixed at the bottom -->
         <LinearLayout
             android:id="@+id/bottomSection"
             android:layout_width="1100dp"
+=======
+        <LinearLayout
+            android:id="@+id/bottomSection"
+            android:layout_width="880dp"
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
             android:gravity="center_horizontal"
+<<<<<<< HEAD
             android:layout_marginBottom="20dp"
+=======
+            android:layout_marginBottom="10dp"
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
             android:layout_centerHorizontal="true"> 
 
             <ViewFlipper
                 android:id="@+id/imageFlipper"
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="160dp"
                 android:autoStart="true"
                 android:flipInterval="5000"
+=======
+                android:layout_height="110dp"
+                android:autoStart="true"
+                android:flipInterval="3000"
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
                 android:inAnimation="@android:anim/fade_in"
                 android:outAnimation="@android:anim/fade_out"/>
 
@@ -201,6 +217,7 @@
                 android:layout_marginTop="5dp"/>
         </LinearLayout>
     </RelativeLayout>
+<<<<<<< HEAD
 
     <!-- Loading Overlay -->
     <View
@@ -238,5 +255,7 @@
         android:layout_height="wrap_content" />
 
 
+=======
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
 
 </androidx.constraintlayout.widget.ConstraintLayout>

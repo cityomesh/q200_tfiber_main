@@ -18,6 +18,17 @@ android {
         versionName = "1.38"
     }
 
+<<<<<<< HEAD
+=======
+    signingConfigs {
+        create("release") {
+            storeFile = file("\\Users\\omeshchintha95gmailcom\\q200pro_tfiber_main\\keystore\\tfiberv1.0.jks") // Replace with your keystore path
+            storePassword = "Ulka123@pwd" // Replace with your keystore password
+            keyAlias = "key0" // Replace with your key alias
+            keyPassword = "Ulka123@pwd" // Replace with your key password
+        }
+    }
+>>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
 
     buildTypes {
         release {
