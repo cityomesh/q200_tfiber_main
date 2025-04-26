@@ -185,7 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:autoStart="true"
-                android:flipInterval="5000"
+                android:flipInterval="3000"
                 android:inAnimation="@android:anim/fade_in"
                 android:outAnimation="@android:anim/fade_out" />
 

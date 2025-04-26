@@ -1,7 +1,6 @@
 package tv.tfiber.launcher
 
 import android.app.AlertDialog
-import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -50,7 +49,6 @@ import android.os.Handler
 import android.os.Looper
 import android.content.*
 import kotlinx.coroutines.delay
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -130,7 +128,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
         // Initialize SoundPool
         createSoundPool()
         // Load the click sound
@@ -181,11 +178,9 @@ class MainActivity : AppCompatActivity() {
 
         val imageUrls = listOf(
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/omesh.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/Hyderabad-Logo.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/ehelthimge.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/threefiber.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/baner2.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/images.png",
         )
 
         for (url in imageUrls) {
@@ -207,7 +202,7 @@ class MainActivity : AppCompatActivity() {
             viewFlipper.addView(imageView)
         }
 
-        viewFlipper.flipInterval = 3000
+        viewFlipper.flipInterval = 30000 // 1 minute
         viewFlipper.startFlipping()
 
         setupRecyclerView()
@@ -335,7 +330,7 @@ class MainActivity : AppCompatActivity() {
             .setDestinationInExternalFilesDir(this, Environment.DIRECTORY_DOWNLOADS, "UlkaLite.apk")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
 
-        val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val dm = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
         val downloadId = dm.enqueue(request)
 
         val receiver = object : BroadcastReceiver() {
@@ -490,6 +485,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerViewLeft.adapter = LauncherAdapter(leftIcons) { iconItem ->
             when (iconItem.packageName) {
+
                 "tv.ulka.ulkalite" -> {
                     val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/ulkatvnewapk/UlkaLite.apk"
                     val packageName = "tv.ulka.ulkalite"
@@ -511,6 +507,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
+
 
                 "com.example.vodapp" -> {
                     val intent = Intent(this, VodActivity::class.java)
@@ -676,6 +673,23 @@ class MainActivity : AppCompatActivity() {
         }, 1000) // Adjust delay as needed
     }
 
+
+
+    fun uninstallApp(packageName: String, onUninstalled: () -> Unit) {
+        val pm = packageManager
+        val intent = Intent(Intent.ACTION_DELETE).apply {
+            data = Uri.parse("package:$packageName")
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        startActivity(intent)
+
+        // You can wait for some delay or listen to uninstall event
+        Handler(Looper.getMainLooper()).postDelayed({
+            onUninstalled()
+        }, 4000) // 4 seconds delay before trying install
+    }
+
+
     private fun uninstallAppIfExists(packageName: String, onUninstalled: () -> Unit) {
         if (!isAppInstalled(packageName)) {
             onUninstalled()
@@ -692,7 +706,6 @@ class MainActivity : AppCompatActivity() {
             onUninstalled()
         }, 2500)
     }
-
 
 
     fun getInstalledVersionName(context: Context, packageName: String): String? {
@@ -822,13 +835,13 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        // 👉 Special case for UlkaLite app — no Play Store redirection
+        // 👉 Special case for UlkaLite app — no Google Play redirect
         if (packageName == "tv.ulka.ulkalite") {
-            Toast.makeText(this, "UlkaLite App is not installed yet. Please install manually.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Installing UlkaLite App...", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // 🔁 For all other apps: try to open Play Store
+        // 🔁 For all other apps: redirect to Play Store
         try {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
         } catch (e: ActivityNotFoundException) {
