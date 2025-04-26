@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressDialog: AlertDialog
     private lateinit var progressBar: ProgressBar
     private lateinit var viewFlipper: ViewFlipper
-<<<<<<< HEAD
     private var uninstallCallback: (() -> Unit)? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -78,8 +77,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-=======
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
     private val audioFocusChangeListener = AudioManager.OnAudioFocusChangeListener { focusChange ->
         when (focusChange) {
             AudioManager.AUDIOFOCUS_GAIN -> {
@@ -183,7 +180,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         val imageUrls = listOf(
-<<<<<<< HEAD
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/omesh.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/Hyderabad-Logo.png",
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/ehelthimge.png",
@@ -192,21 +188,6 @@ class MainActivity : AppCompatActivity() {
             "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/images.png",
         )
 
-
-=======
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/bottom_banner.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/app/src/main/res/drawable/endrammahouse2.png"
-        )
-
-
-//        val imageUrls = listOf(
-//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide1.png",
-//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide2.png",
-//            "https://202.62.66.121:8080/1/files/t-fiber/home/slide3.png"
-//        )
-
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
         for (url in imageUrls) {
             val imageView = ImageView(this)
             imageView.layoutParams = ViewGroup.LayoutParams(
@@ -215,19 +196,12 @@ class MainActivity : AppCompatActivity() {
             )
             imageView.scaleType = ImageView.ScaleType.FIT_XY
 
-<<<<<<< HEAD
             val updatedUrl = "$url?timestamp=${System.currentTimeMillis()}"
 
             Glide.with(this)
                 .load(updatedUrl)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
-=======
-            Glide.with(this)
-                .load(url)
-//                .placeholder(R.drawable.placeholder)
-//                .error(R.drawable.fallback_image)
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
                 .into(imageView)
 
             viewFlipper.addView(imageView)
@@ -516,30 +490,6 @@ class MainActivity : AppCompatActivity() {
 
         recyclerViewLeft.adapter = LauncherAdapter(leftIcons) { iconItem ->
             when (iconItem.packageName) {
-
-
-//                "tv.ulka.ulkalite" -> {
-//                    val sharedPref = getSharedPreferences("ulka_prefs", Context.MODE_PRIVATE)
-//                    val alreadyInstalled = sharedPref.getBoolean("ulka_installed", false)
-//
-//                    val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/ulkatvnewapk/UlkaLite.apk"
-//                    val packageName = "tv.ulka.ulkalite"
-//
-//                    if (isAppInstalled(packageName)) {
-//                        Toast.makeText(this, "UlkaLite App Installed", Toast.LENGTH_SHORT).show()
-//                        launchApp(packageName)
-//
-//                    } else {
-//                        Toast.makeText(this, "Installing UlkaLite...", Toast.LENGTH_SHORT).show()
-//
-//                        downloadAndInstallApk(apkUrl) {
-//                            sharedPref.edit().putBoolean("ulka_installed", true).apply()
-//                            launchApp(packageName)
-//                        }
-//                    }
-//                }
-
-
                 "tv.ulka.ulkalite" -> {
                     val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/ulkatvnewapk/UlkaLite.apk"
                     val packageName = "tv.ulka.ulkalite"
@@ -561,10 +511,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-
-
-
-
 
                 "com.example.vodapp" -> {
                     val intent = Intent(this, VodActivity::class.java)
@@ -669,13 +615,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
-
-
     private fun installApk(file: File, onInstalled: () -> Unit) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(
@@ -737,9 +676,6 @@ class MainActivity : AppCompatActivity() {
         }, 1000) // Adjust delay as needed
     }
 
-
-
-
     private fun uninstallAppIfExists(packageName: String, onUninstalled: () -> Unit) {
         if (!isAppInstalled(packageName)) {
             onUninstalled()
@@ -767,11 +703,6 @@ class MainActivity : AppCompatActivity() {
             null
         }
     }
-
-
-
-
-
 
     private fun setupTextureView() {
         textureView.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
@@ -854,99 +785,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    private fun launchApp(packageName: String?) {
-//        Log.d("MainActivity", "Attempting to launch: $packageName")
-//
-//        if (packageName.isNullOrEmpty()) {
-//            Log.e("MainActivity", "Package name is null or empty")
-//            Toast.makeText(this, "App not installed", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//
-//        // Special case: open Android Settings
-//        if (packageName == "com.android.settings") {
-//            startActivity(Intent(Settings.ACTION_SETTINGS))
-//            return
-//        }
-//
-//        val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
-//        if (launchIntent != null) {
-//            startActivity(launchIntent)
-//        } else {
-//            Toast.makeText(this, "App not found", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        // Try to launch using Leanback launcher
-//        val intent = Intent(Intent.ACTION_MAIN).apply {
-//            addCategory(Intent.CATEGORY_LEANBACK_LAUNCHER)
-//            setPackage(packageName)
-//        }
-//
-//        val resolveInfo = packageManager.queryIntentActivities(intent, 0).firstOrNull()
-//        if (resolveInfo != null) {
-//            val leanbackIntent = Intent(Intent.ACTION_MAIN).apply {
-//                addCategory(Intent.CATEGORY_LEANBACK_LAUNCHER)
-//                component = ComponentName(packageName, resolveInfo.activityInfo.name)
-//                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//            }
-//            startActivity(leanbackIntent)
-//        } else {
-//            // Redirect to Play Store
-//            try {
-//                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-//            } catch (e: android.content.ActivityNotFoundException) {
-//                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
-//            }
-//        }
-//    }
-
-
-
-
-//    private fun launchApp(packageName: String?) {
-//        Log.d("MainActivity", "Attempting to launch: $packageName")
-//
-//        if (packageName.isNullOrEmpty()) {
-//            Log.e("MainActivity", "Package name is null or empty")
-//            Toast.makeText(this, "App not installed", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//
-//        // Special case: open Android Settings
-//        if (packageName == "com.android.settings") {
-//            startActivity(Intent(Settings.ACTION_SETTINGS))
-//            return
-//        }
-//
-//        // First try: regular launch
-//        val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
-//        if (launchIntent != null) {
-//            startActivity(launchIntent)
-//            return
-//        }
-//
-//        // Second try: Leanback launcher
-//        val intent = Intent(Intent.ACTION_MAIN).apply {
-//            addCategory(Intent.CATEGORY_LEANBACK_LAUNCHER)
-//            setPackage(packageName)
-//        }
-//
-//        val resolveInfo = packageManager.queryIntentActivities(intent, 0).firstOrNull()
-//        if (resolveInfo != null) {
-//            val leanbackIntent = Intent(Intent.ACTION_MAIN).apply {
-//                addCategory(Intent.CATEGORY_LEANBACK_LAUNCHER)
-//                component = ComponentName(packageName, resolveInfo.activityInfo.name)
-//                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//            }
-//            startActivity(leanbackIntent)
-//        } else {
-//            // App not found
-//            Toast.makeText(this, "App not installed on device", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
-
-
     private fun launchApp(packageName: String?) {
         Log.d("MainActivity", "Attempting to launch: $packageName")
 
@@ -980,33 +818,21 @@ class MainActivity : AppCompatActivity() {
                 component = ComponentName(packageName, resolveInfo.activityInfo.name)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
-<<<<<<< HEAD
             startActivity(leanbackIntent)
             return
         }
 
-        // 👉 Special case for UlkaLite app — no Google Play redirect
+        // 👉 Special case for UlkaLite app — no Play Store redirection
         if (packageName == "tv.ulka.ulkalite") {
-            Toast.makeText(this, "Installing UlkaLite App...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "UlkaLite App is not installed yet. Please install manually.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // 🔁 For all other apps: redirect to Play Store
+        // 🔁 For all other apps: try to open Play Store
         try {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
         } catch (e: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
-=======
-            startActivity(launchIntent)
-        } else {
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-            } catch (e: ActivityNotFoundException) {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
-            }
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
         }
     }
-
-
 }

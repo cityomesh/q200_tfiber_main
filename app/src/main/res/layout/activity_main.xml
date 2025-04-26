@@ -125,7 +125,7 @@
         app:layout_constraintTop_toTopOf="@id/texture_view_container"
         app:layout_constraintBottom_toBottomOf="@id/texture_view_container" />
 
-
+    <!-- FrameLayout with TextureView (for video) -->
     <FrameLayout
         android:id="@+id/texture_view_container"
         android:layout_width="500dp"
@@ -136,7 +136,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Outer FrameLayout with border background -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -144,7 +143,6 @@
             android:padding="5dp"
             android:clipToOutline="true">
 
-            <!-- Actual video view -->
             <TextureView
                 android:id="@+id/bannerTextureView"
                 android:layout_width="match_parent"
@@ -167,45 +165,29 @@
         app:layout_constraintTop_toTopOf="@id/texture_view_container"
         app:layout_constraintBottom_toBottomOf="@id/texture_view_container" />
 
+    <!-- Bottom Section fixed at the bottom -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<<<<<<< HEAD
-        <!-- Bottom Section fixed at the bottom -->
         <LinearLayout
             android:id="@+id/bottomSection"
             android:layout_width="1100dp"
-=======
-        <LinearLayout
-            android:id="@+id/bottomSection"
-            android:layout_width="880dp"
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-<<<<<<< HEAD
             android:layout_marginBottom="20dp"
-=======
-            android:layout_marginBottom="10dp"
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
             android:layout_centerHorizontal="true"> 
 
             <ViewFlipper
                 android:id="@+id/imageFlipper"
                 android:layout_width="match_parent"
-<<<<<<< HEAD
                 android:layout_height="160dp"
                 android:autoStart="true"
                 android:flipInterval="5000"
-=======
-                android:layout_height="110dp"
-                android:autoStart="true"
-                android:flipInterval="3000"
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
                 android:inAnimation="@android:anim/fade_in"
-                android:outAnimation="@android:anim/fade_out"/>
+                android:outAnimation="@android:anim/fade_out" />
 
             <!-- Customer Care Image -->
             <ImageView
@@ -217,7 +199,6 @@
                 android:layout_marginTop="5dp"/>
         </LinearLayout>
     </RelativeLayout>
-<<<<<<< HEAD
 
     <!-- Loading Overlay -->
     <View
@@ -226,9 +207,7 @@
         android:layout_height="match_parent"
         android:background="#80000000"
         android:visibility="gone"
-        android:gravity="center"
-        android:textSize="76sp"
-        android:layout_gravity="center" />
+        android:gravity="center" />
 
     <!-- Loading Text -->
     <LinearLayout
@@ -245,17 +224,13 @@
             android:textSize="76sp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center" />
+            android:gravity="center" />
     </LinearLayout>
 
+    <!-- Live TV Logo -->
     <ImageView
         android:id="@+id/livetv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-
-=======
->>>>>>> 1fa58c2356b2099111e5f6c99bbb5bac1ce03a93
-
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
