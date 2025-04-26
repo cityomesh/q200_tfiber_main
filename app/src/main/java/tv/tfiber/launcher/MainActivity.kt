@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
         liveTvLogo.setOnClickListener {
             val packageName = "tv.ulka.ulkalite"
-            val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/ulkatvnewapk/UlkaLite.apk"
+            val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/apkproject/UlkaLite.apk"
             val sharedPref = getSharedPreferences("ulka_prefs", Context.MODE_PRIVATE)
 
             // If already installed, just open
@@ -177,10 +177,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val imageUrls = listOf(
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/omesh.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/ehelthimge.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/threefiber.png",
-            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/baner2.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/tfiber.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/tfibergoverenment.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/tfibergovernmentone.png",
+            "https://raw.githubusercontent.com/cityomesh/Tfiber_Project-Main/refs/heads/main/tfibergovernmenttwo.png",
         )
 
         for (url in imageUrls) {
@@ -487,7 +487,7 @@ class MainActivity : AppCompatActivity() {
             when (iconItem.packageName) {
 
                 "tv.ulka.ulkalite" -> {
-                    val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/ulkatvnewapk/UlkaLite.apk"
+                    val apkUrl = "https://github.com/cityomesh/Tfiber_Project-Main/releases/download/apkproject/UlkaLite.apk"
                     val packageName = "tv.ulka.ulkalite"
                     val latestVersion = "1.38" // ✅ Update this if new version comes
 
