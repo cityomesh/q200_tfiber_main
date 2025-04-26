@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
-    android:background="@drawable/launcherbackground1"
     android:focusableInTouchMode="true"
+    android:background="@drawable/launcherbackground1"
     tools:context=".MainActivity">
 
     <!-- Guideline for vertical positioning -->
@@ -18,33 +18,35 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
+    <!-- BSNL Logo at Top -->
+    <ImageView
+        android:id="@+id/bsnllogo"
+        android:layout_width="330dp"
+        android:layout_height="180dp"
+        android:translationX="65dp"
+        android:translationY="-20dp"
+        android:src="@drawable/bsnl_logo"
+        android:contentDescription="Bsnl Image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- TFiber Logo -->
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="480dp"
-        android:layout_height="130dp"
+        android:layout_width="640dp"
+        android:layout_height="230dp"
         android:focusable="false"
+        android:translationY="50dp"
         android:src="@drawable/tfiber_png"
         app:layout_constraintBottom_toTopOf="@id/texture_view_container"
         app:layout_constraintEnd_toEndOf="@id/texture_view_container"
-        app:layout_constraintStart_toStartOf="@id/texture_view_container"
-        android:translationY="15dp"/> <!-- Move image up -->
+        app:layout_constraintStart_toStartOf="@id/texture_view_container" />
 
-    <ImageView
-        android:id="@+id/bsnllogo"
-        android:layout_width="230dp"
-        android:layout_height="180dp"
-        android:translationX="50dp"
-        android:translationY="-30dp"
-        android:src="@drawable/bsnl_logo"
-        android:contentDescription="Bsnl Image"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <!-- Settings Icon (Before ClockContainer) -->
+    <!-- Settings Icon -->
     <ImageView
         android:id="@+id/settingsIcon"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="83dp"
         android:clickable="true"
         android:focusable="true"
@@ -55,36 +57,36 @@
         app:layout_constraintEnd_toStartOf="@id/clockContainer"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Update Icon (Next to Settings Icon) -->
+    <!-- Update Icon -->
     <ImageView
         android:id="@+id/updateIcon"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="95dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="100dp"
         android:clickable="true"
-        android:contentDescription="Update Icon"
         android:focusable="true"
+        android:contentDescription="Update Icon"
         android:nextFocusLeft="@id/settingsIcon"
         android:nextFocusRight="@id/recyclerViewRight"
         android:nextFocusDown="@+id/recyclerViewRight"
         android:src="@drawable/update"
         android:background="@drawable/update_icon_background"
-        app:layout_constraintEnd_toStartOf="@id/clockContainer"
         app:layout_constraintStart_toEndOf="@id/settingsIcon"
+        app:layout_constraintEnd_toStartOf="@id/clockContainer"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Digital Clock Widget at the right side of the screen -->
+    <!-- Clock Container -->
     <LinearLayout
         android:id="@+id/clockContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="50dp"
-        android:focusable="false"
-        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="90dp"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -101,65 +103,46 @@
             android:id="@+id/dateClock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:format12Hour="EEEE, MMM dd"
             android:format24Hour="EEEE, MMM dd"
             android:textColor="@color/my_clock_color"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
-    <!-- Left-side icons -->
+    <!-- Left-side RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewLeft"
-        android:layout_width="200dp"
+        android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:overScrollMode="never"
-        android:nextFocusDown="@+id/recyclerViewLeft"
-        android:nextFocusUp="@id/settingsIcon"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:nextFocusDown="@+id/recyclerViewLeft"
+        android:nextFocusUp="@id/settingsIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/texture_view_container"
         app:layout_constraintTop_toTopOf="@id/texture_view_container"
         app:layout_constraintBottom_toBottomOf="@id/texture_view_container" />
 
-    <!-- Video Frame -->
-    <!-- <FrameLayout
-        android:id="@+id/texture_view_container"
-        android:layout_width="400dp"
-        android:layout_height="250dp"
-        android:background="@drawable/rounded_video_background"
-        android:clipToOutline="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="120dp">
-
-        <TextureView
-            android:id="@+id/bannerTextureView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    </FrameLayout> -->
-
 
     <FrameLayout
         android:id="@+id/texture_view_container"
-        android:layout_width="400dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="120dp"
+        android:layout_width="500dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="160dp"
         android:clipToOutline="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Outer FrameLayout that acts as border -->
+        <!-- Outer FrameLayout with border background -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10px"
-            android:background="@drawable/border_background">
+            android:background="@drawable/border_background"
+            android:padding="5dp"
+            android:clipToOutline="true">
 
             <!-- Actual video view -->
             <TextureView
@@ -169,67 +152,90 @@
         </FrameLayout>
     </FrameLayout>
 
-    <!-- Right-side icons -->
+    <!-- Right-side RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRight"
-        android:layout_width="200dp"
+        android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:overScrollMode="never"
-        android:nextFocusDown="@+id/recyclerViewRight"
-        android:nextFocusUp="@id/updateIcon"
         android:clipChildren="false"
         android:clipToPadding="false"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:nextFocusDown="@+id/recyclerViewRight"
+        android:nextFocusUp="@id/updateIcon"
         app:layout_constraintStart_toEndOf="@id/texture_view_container"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/texture_view_container"
-        app:layout_constraintBottom_toBottomOf="@id/texture_view_container"/>  <!-- Reduce vertical gap -->
+        app:layout_constraintBottom_toBottomOf="@id/texture_view_container" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Bottom Section fixed at the bottom -->
+        <LinearLayout
+            android:id="@+id/bottomSection"
+            android:layout_width="1100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"> 
+
+            <ViewFlipper
+                android:id="@+id/imageFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:autoStart="true"
+                android:flipInterval="5000"
+                android:inAnimation="@android:anim/fade_in"
+                android:outAnimation="@android:anim/fade_out"/>
+
+            <!-- Customer Care Image -->
+            <ImageView
+                android:id="@+id/customercare"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/customer_care"
+                android:scaleType="fitXY"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Loading Overlay -->
+    <View
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="76sp"
+        android:layout_gravity="center" />
+
+    <!-- Loading Text -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_margin="10dp">
+        android:orientation="vertical">
 
-        <!-- ViewFlipper for auto-scrolling banner images -->
-        <ViewFlipper
-            android:id="@+id/imageFlipper"
-            android:layout_width="880dp"
+        <TextView
+            android:id="@+id/loadingTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="380dp"
-            android:autoStart="true"
-            android:flipInterval="3000"
-            android:inAnimation="@android:anim/fade_in"
-            android:outAnimation="@android:anim/fade_out">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bottom_banner"
-                android:scaleType="fitXY" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/endrammahouse"
-                android:scaleType="fitXY" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/endrammahouse2"
-                android:scaleType="fitXY" />
-        </ViewFlipper>
-
-        <!-- Customer Care Image -->
-        <ImageView
-            android:id="@+id/customercare"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/customer_care"
-            android:scaleType="fitXY"
-            android:layout_marginTop="-2dp"/>
+            android:textColor="#FFFFFF"
+            android:textSize="76sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/livetv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 

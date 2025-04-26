@@ -21,6 +21,7 @@
         app:layout_constraintBottom_toTopOf="@id/texture_view_container"
         app:layout_constraintEnd_toEndOf="@id/texture_view_container"
         app:layout_constraintStart_toStartOf="@id/texture_view_container"
+        android:translationX="35dp"
         android:translationY="5dp"/> <!-- Move image up -->
 
     <!-- Dummy Top Banner -->
@@ -41,6 +42,8 @@
         android:layout_marginEnd="50dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:translationX="-45dp"
+        android:translationY="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -82,7 +85,7 @@
         android:focusable="true"
         android:padding="40dp"
         android:translationY="40dp"
-        android:translationX="6dp"
+        android:translationX="35dp"
         android:text="Updates"
         android:textSize="22sp"
         android:textColor="#FFFFFF"
@@ -115,7 +118,7 @@
         android:focusable="true"
         android:padding="40dp"
         android:translationY="40dp"
-        android:translationX="6dp"
+        android:translationX="35dp"
         android:text="Videos"
         android:textSize="25sp"
         android:textColor="#FFFFFF"

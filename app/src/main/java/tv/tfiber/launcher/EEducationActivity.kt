@@ -28,8 +28,8 @@ class EEducationActivity : AppCompatActivity() {
             IconItem(R.drawable.epass, "", packageName="com.cgg.epass") // TSAT APP
         )
 
-        // Display exactly 6 icons per row & increase icon size
-        recyclerView.layoutManager = GridLayoutManager(this, 6)
+        // Display exactly 5 icons per row & increase icon size
+        recyclerView.layoutManager = GridLayoutManager(this, 7)
         recyclerView.adapter = LauncherAdapter(rightIcons) { iconItem ->
             when {
                 iconItem.packageName == "com.google.android.youtube" -> {
